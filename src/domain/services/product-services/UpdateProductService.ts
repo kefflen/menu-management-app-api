@@ -17,13 +17,7 @@ export default class UpdateProductService extends ProductServices {
 
     let categories: null | Category[] = null
     if (categoryIds) {
-      categories = await Promise.all(
-        categoryIds.map(async (categoryId) => {
-          const category = await this.categoryRepository.getById(categoryId)
-          if (!category) throw AppError.notFound('Category not found')
-          return category
-        })
-      )
+      categories = await this.getCategoriesByIds(categoryIds)
     }
 
     if (name) product.name = name
