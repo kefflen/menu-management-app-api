@@ -1,8 +1,4 @@
 import User from '../entities/User'
+import IEntityRepository from './IEntityRepository'
 
-export default interface IUserRepository {
-  create(user: User): Promise<User>
-  getById(id: string): Promise<User | null>
-  update(user: User): Promise<User>
-  delete(id: string): Promise<void>
-}
+export default interface IUserRepository extends IEntityRepository<User> {}
