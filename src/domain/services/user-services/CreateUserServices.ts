@@ -7,8 +7,14 @@ export default class CreateUserService {
     private userRepository: IUserRepository,
     private passwordManager: IPasswordManager
   ) {}
-  async execute({ name, password, isAdmin }: Omit<userDTO, 'id'> ): Promise<User> {
-    const encryptedPassword = await this.passwordManager.encryptPassword(password)
+  async execute({
+    name,
+    password,
+    isAdmin,
+  }: Omit<userDTO, 'id'>): Promise<User> {
+    const encryptedPassword = await this.passwordManager.encryptPassword(
+      password
+    )
     const user = new User({ name, password: encryptedPassword, isAdmin })
     const createdUser = await this.userRepository.create(user)
 

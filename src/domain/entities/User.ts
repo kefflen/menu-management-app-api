@@ -1,4 +1,3 @@
-
 export type userDTO = {
   id?: string
   name: string
@@ -11,7 +10,7 @@ export default class User {
   public name: string
   public password: string
   public isAdmin: boolean
-  constructor({id, name, password, isAdmin}: userDTO) {
+  constructor({ id, name, password, isAdmin }: userDTO) {
     this.id = id
     this.name = name
     this.password = password
