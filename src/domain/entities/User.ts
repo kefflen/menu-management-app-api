@@ -1,12 +1,16 @@
+import crypto from 'node:crypto'
+
 export type userDTO = {
-  id?: string
+  id: string
   name: string
   password: string
   isAdmin: boolean
 }
 
+export type createUserDTO = Omit<userDTO, 'id'>
+
 export default class User {
-  public readonly id?: string
+  public readonly id: string
   public name: string
   public password: string
   public isAdmin: boolean
@@ -15,5 +19,10 @@ export default class User {
     this.name = name
     this.password = password
     this.isAdmin = isAdmin
+  }
+
+  static create({ name, password, isAdmin }: createUserDTO): User {
+    const id = crypto.randomUUID()
+    return new this({ id, name, password, isAdmin })
   }
 }
