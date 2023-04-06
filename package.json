@@ -8,7 +8,8 @@
     "format": "prettier --write src/**/*.{ts,js}",
     "lint:fix": "eslint src/**/*.{ts,js} --fix",
     "lint": "eslint src/**/*.{ts,js}",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "precommit": "npm run lint:fix && npm run format"
   },
   "repository": {
     "type": "git",
@@ -25,8 +26,14 @@
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "eslint": "^8.37.0",
+    "husky": "^8.0.3",
     "prettier": "^2.8.7",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
   }
 }
