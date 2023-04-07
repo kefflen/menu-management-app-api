@@ -6,13 +6,14 @@ import {
   listUsersController,
   updateUserController,
 } from '../controllers/UserControllers'
+import ensureAuthenticated from '../middlewares/ensureAuthenticated'
 
 const userRoutes = Router()
 
 userRoutes.post('/', createUserController)
-userRoutes.get('/:userId', getUserByIdController)
-userRoutes.get('/', listUsersController)
-userRoutes.patch('/', updateUserController)
-userRoutes.delete('/userId', deleteUserController)
+userRoutes.get('/:userId', ensureAuthenticated, getUserByIdController)
+userRoutes.get('/', ensureAuthenticated, listUsersController)
+userRoutes.patch('/', ensureAuthenticated, updateUserController)
+userRoutes.delete('/userId', ensureAuthenticated, deleteUserController)
 
 export default userRoutes

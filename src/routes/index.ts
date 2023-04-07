@@ -3,11 +3,12 @@ import userRoutes from './userRoutes'
 import categoryRoutes from './categoryRoutes'
 import productRoutes from './productRoutes'
 import authRoutes from './authRoutes'
+import ensureAuthenticated from '../middlewares/ensureAuthenticated'
 
 const routes = Router()
 routes.use('/user', userRoutes)
-routes.use('/category', categoryRoutes)
-routes.use('/product', productRoutes)
+routes.use('/category', ensureAuthenticated, categoryRoutes)
+routes.use('/product', ensureAuthenticated, productRoutes)
 routes.use('/auth', authRoutes)
 
 export {
