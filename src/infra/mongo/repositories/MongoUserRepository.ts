@@ -33,6 +33,9 @@ export default class MongoUserRepository implements IUserRepository {
   }
 
   async getUserByEmail(email: string): Promise<User | null> {
-    throw Error('Not implemented')
+    const userDTO = await UserModel.findOne({ email })
+
+    if (!userDTO) return null
+    return new User(userDTO)
   }
 }
