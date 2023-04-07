@@ -5,9 +5,9 @@ import productRoutes from './productRoutes'
 import authRoutes from './authRoutes'
 
 const routes = Router()
-routes.use('/users', userRoutes)
-routes.use('/categories', categoryRoutes)
-routes.use('/products', productRoutes)
+routes.use('/user', userRoutes)
+routes.use('/category', categoryRoutes)
+routes.use('/product', productRoutes)
 routes.use('/auth', authRoutes)
 
 export {
