@@ -2,7 +2,7 @@ import Category, { categoryDTO } from '../../entities/Category'
 import AppError from '../../errors/AppError'
 import CategoryServices from './CategoryServices'
 
-type updateCategoryParams = Partial<Omit<categoryDTO, 'parent'|'id'>> & {
+type updateCategoryParams = Partial<Omit<categoryDTO, 'parent'|'_id'>> & {
   parentCategoryId?: string
 }
 

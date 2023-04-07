@@ -1,8 +1,8 @@
 
-export default interface IEntityRepository<E extends { id: string }> {
+export default interface IEntityRepository<E extends { _id: string }> {
   list(): Promise<E[]>
   create(entity: E): Promise<E>
-  getById(entityId: E['id']): Promise<E|null>
+  getById(entityId: E['_id']): Promise<E|null>
   update(entity: E): Promise<E>
-  delete(entityId: E['id']): Promise<void>
+  delete(entityId: E['_id']): Promise<void>
 }

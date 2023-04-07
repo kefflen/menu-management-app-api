@@ -1,28 +1,28 @@
 import crypto from 'node:crypto'
 
 export type categoryDTO = {
-  id: string
+  _id: string
   name: string
   parent: categoryDTO|null
 }
 
-export type createCategoryDTO = Omit<categoryDTO, 'id'>
+export type createCategoryDTO = Omit<categoryDTO, '_id'>
 
 export default class Category {
-  public readonly id: string
+  public readonly _id: string
   public name: string
   public parent: Category|null
 
   constructor({
-    id, name, parent
+    _id, name, parent
   }: categoryDTO) {
-    this.id = id
+    this._id = _id
     this.name = name
     this.parent = parent? new Category(parent) : null
   }
 
   static create({ name, parent }: createCategoryDTO) {
-    const id = crypto.randomUUID()
-    return new this({ id, name, parent })
+    const _id = crypto.randomUUID()
+    return new this({ _id, name, parent })
   }
 }

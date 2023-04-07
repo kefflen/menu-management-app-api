@@ -3,7 +3,7 @@ import Product, { productDTO } from '../../entities/Product'
 import AppError from '../../errors/AppError'
 import ProductServices from './ProductServices'
 
-type updateProductParams = Partial<Omit<productDTO, 'id'|'categories'>> & {
+type updateProductParams = Partial<Omit<productDTO, '_id'|'categories'>> & {
   categoryIds?: string[]
 }
 
