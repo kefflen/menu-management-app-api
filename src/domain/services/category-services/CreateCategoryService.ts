@@ -8,7 +8,7 @@ type createCategoryParams = Omit<createCategoryDTO, 'parent'> & {
   parentCategoryId?: string
 }
 
-export default class CreateCategoryService extends CategoryServices {
+export class CreateCategoryService extends CategoryServices {
   async execute({
     name, parentCategoryId
   }: createCategoryParams): Promise<Category> {

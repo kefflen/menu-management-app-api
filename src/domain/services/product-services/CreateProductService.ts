@@ -6,7 +6,7 @@ type createProductParams = Omit<createProductDTO, 'categories'> & {
   categoryIds: string[]
 }
 
-export default class CreateProductService extends ProductServices {
+export class CreateProductService extends ProductServices {
   async execute({
     name,
     price,

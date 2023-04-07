@@ -1,7 +1,7 @@
 import User, { createUserDTO } from '../../entities/User'
 import { UserServices } from './UserServices'
 
-export default class CreateUserService extends UserServices{
+export class CreateUserService extends UserServices{
   async execute({ name, email, password, isAdmin }: createUserDTO): Promise<User> {
     const encryptedPassword = await this.passwordManager.encryptPassword(
       password

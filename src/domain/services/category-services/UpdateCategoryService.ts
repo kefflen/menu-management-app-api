@@ -6,7 +6,7 @@ type updateCategoryParams = Partial<Omit<categoryDTO, 'parent'|'_id'>> & {
   parentCategoryId?: string
 }
 
-export default class UpdateCategoryService extends CategoryServices {
+export class UpdateCategoryService extends CategoryServices {
   async execute(categoryId: string, { name, parentCategoryId }: updateCategoryParams): Promise<Category> {
     const category = await this.categoryRepository.getById(categoryId)
     if (category === null) throw AppError.notFound('Category not found')

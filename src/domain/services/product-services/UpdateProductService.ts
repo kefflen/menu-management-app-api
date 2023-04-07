@@ -7,7 +7,7 @@ type updateProductParams = Partial<Omit<productDTO, '_id'|'categories'>> & {
   categoryIds?: string[]
 }
 
-export default class UpdateProductService extends ProductServices {
+export class UpdateProductService extends ProductServices {
   async execute(productId: string, {
     name, price, qty, categoryIds
   }: updateProductParams): Promise<Product> {
