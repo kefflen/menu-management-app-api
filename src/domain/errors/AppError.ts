@@ -9,4 +9,8 @@ export default class AppError {
   static notFound(message: string) {
     return new this(message, 404)
   }
+
+  static unauthorized(message: string) {
+    return new this(message, 401)
+  }
 }
