@@ -6,8 +6,9 @@ export default class JwtManager implements IJwtManager {
     const SECRET_KEY = process.env.SECRET_KEY
     if (!SECRET_KEY) throw Error('Missing SECRET_KEY')
 
-    const token = jwt.sign(subject, SECRET_KEY, {
-      subject, expiresIn: '1d'
+    const token = jwt.sign({ userId: subject }, SECRET_KEY, {
+      subject,
+      expiresIn: '1h',
     })
 
     return token
@@ -18,12 +19,10 @@ export default class JwtManager implements IJwtManager {
     if (!SECRET_KEY) throw Error('Missing SECRET_KEY')
 
     try {
-      const payload = jwt.verify(token, SECRET_KEY) as string
-
-      return payload
+      const { userId } = jwt.verify(token, SECRET_KEY) as { userId: string }
+      return userId
     } catch (err) {
       return null
     }
   }
-
 }
