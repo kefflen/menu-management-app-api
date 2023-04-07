@@ -3,7 +3,7 @@ import crypto from 'node:crypto'
 export type categoryDTO = {
   _id: string
   name: string
-  parent: categoryDTO|null
+  parent?: categoryDTO|null
 }
 
 export type createCategoryDTO = Omit<categoryDTO, '_id'>

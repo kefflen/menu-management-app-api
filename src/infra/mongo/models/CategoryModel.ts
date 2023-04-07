@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose'
+import { categoryDTO } from '../../../domain/entities/Category'
 
 const CategorySchema = new Schema({
   _id: {
@@ -9,10 +10,10 @@ const CategorySchema = new Schema({
     type: 'string',
     required: true,
   },
-  parentId: {
+  parent: {
     type: String,
     ref: 'Category'
   },
 })
 
-export default model('Category', CategorySchema)
+export default model<categoryDTO>('Category', CategorySchema)
