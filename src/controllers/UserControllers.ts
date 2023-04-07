@@ -17,8 +17,8 @@ export async function createUserController(req: Request, res: Response) {
 }
 
 export async function getUserByIdController(req: Request, res: Response) {
-  const id = req.params.id
-  const user = await getUserByIdService.execute(id)
+  const userId = req.params.userId
+  const user = await getUserByIdService.execute(userId)
 
   return res.json(user)
 }
@@ -37,8 +37,8 @@ export async function updateUserController(req: Request, res: Response) {
 }
 
 export async function deleteUserController(req: Request, res: Response) {
-  const id = req.params.id
-  await deleteUserService.execute(id)
+  const userId = req.params.userId
+  await deleteUserService.execute(userId)
 
   return res.sendStatus(200)
 }
