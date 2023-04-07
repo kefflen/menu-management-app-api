@@ -1,4 +1,4 @@
-import { Request, Response, request } from 'express'
+import { Request, Response } from 'express'
 import makeUserServices from '../factories/makeUserServices'
 
 const {
