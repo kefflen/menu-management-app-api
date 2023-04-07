@@ -15,6 +15,6 @@ export default function makeUserServices() {
     deleteUserService: new DeleteUserService(depedencies),
     updateUserService: new UpdateUserService(depedencies),
     getUserByIdService: new GetUserByIdService(depedencies),
-    ListUsersService: new ListUsersService(depedencies),
+    listUsersService: new ListUsersService(depedencies),
   }
 }
