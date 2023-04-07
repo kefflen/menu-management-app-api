@@ -23,7 +23,9 @@ export default class MongoCategoryRepository implements ICategoryRepository {
   }
 
   async update(category: Category): Promise<Category> {
-    const categoryDTO = await CategoryModel.findOneAndUpdate(category).populate(
+    const { _id, ...otherProps } = category
+    await CategoryModel.updateOne({ _id }, otherProps)
+    const categoryDTO = await CategoryModel.findById(_id).populate(
       'parent'
     )
 

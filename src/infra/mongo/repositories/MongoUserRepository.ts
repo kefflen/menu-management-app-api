@@ -11,7 +11,7 @@ export default class MongoUserRepository implements IUserRepository {
 
   async list(): Promise<User[]> {
     const usersDTO = await UserModel.find()
-    return usersDTO.map(userDTO => new User(userDTO))
+    return usersDTO.map((userDTO) => new User(userDTO))
   }
 
   async getById(userId: string): Promise<User | null> {
@@ -21,8 +21,9 @@ export default class MongoUserRepository implements IUserRepository {
   }
 
   async update(user: User): Promise<User> {
-    const userDTO = await UserModel.findOneAndUpdate(user)
-
+    const { _id, ...otherProps } = user
+    await UserModel.updateOne({ _id }, otherProps)
+    const userDTO = await UserModel.findById(_id)
     if (!userDTO) throw AppError.notFound('User not found')
 
     return new User(userDTO)

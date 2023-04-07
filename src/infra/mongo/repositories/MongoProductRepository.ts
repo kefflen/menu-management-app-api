@@ -23,7 +23,9 @@ export default class MongoProductRepository implements IProductRepository {
   }
 
   async update(product: Product): Promise<Product> {
-    const productDTO = await ProductModel.findOneAndUpdate(product).populate(
+    const { _id, ...otherProps } = product
+    await ProductModel.updateOne({ _id }, otherProps)
+    const productDTO = await ProductModel.findById(_id).populate(
       'categories'
     )
 
