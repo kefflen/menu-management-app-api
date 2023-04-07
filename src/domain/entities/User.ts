@@ -8,6 +8,10 @@ export type userDTO = {
   isAdmin: boolean
 }
 
+type NeverPasswordType<T> = {
+  [k in keyof T as k extends 'password' ? never : k]: T[k]
+}
+export type userWithoutPasswordDTO = NeverPasswordType<userDTO>
 export type createUserDTO = Omit<userDTO, '_id'>
 
 export default class User {
@@ -27,5 +31,14 @@ export default class User {
   static create({ name, email, password, isAdmin }: createUserDTO): User {
     const _id = crypto.randomUUID()
     return new this({ _id, email, name, password, isAdmin })
+  }
+
+  toObjectWithoutPassword(): userWithoutPasswordDTO {
+    return {
+      _id: this._id,
+      email: this.email,
+      isAdmin: this.isAdmin,
+      name: this.name,
+    }
   }
 }
