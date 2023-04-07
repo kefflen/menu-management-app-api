@@ -32,4 +32,7 @@ export default class MongoUserRepository implements IUserRepository {
     await UserModel.deleteOne({ _id: userId })
   }
 
+  async getUserByEmail(email: string): Promise<User | null> {
+    throw Error('Not implemented')
+  }
 }
