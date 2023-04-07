@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/kefflen/menu-management-app-api#readme",
   "devDependencies": {
+    "@types/mongoose": "^5.11.97",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "eslint": "^8.37.0",
@@ -35,5 +36,8 @@
     "hooks": {
       "pre-commit": "npm run precommit"
     }
+  },
+  "dependencies": {
+    "mongoose": "^7.0.3"
   }
 }
