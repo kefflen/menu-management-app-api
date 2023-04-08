@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import { z } from 'zod'
 import makeCategoryServices from '../factories/makeCategoryServices'
+import { categoryZodSchema } from '../ZodSchemas'
 
 const {
   createCategoryService,
@@ -9,12 +9,6 @@ const {
   updateCategoryService,
   deleteCategoryService,
 } = makeCategoryServices()
-
-const categoryZodSchema = z.object({
-  id: z.string().uuid('Need to pass a valid id'),
-  name: z.string().min(1, 'Need to pass a valid category name'),
-  parentId: z.string().uuid('Need to pass a valid parent id'),
-})
 
 const createCategorySchema = categoryZodSchema.omit({ id: true})
 export async function createCategoryController(req: Request, res: Response) {

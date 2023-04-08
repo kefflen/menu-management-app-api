@@ -1,14 +1,10 @@
 import { Request, Response } from 'express'
 import makeAuthServices from '../factories/makeAuthServices'
-import { z } from 'zod'
+import { userZodSchema } from '../ZodSchemas'
 
 const { loginService } = makeAuthServices()
 
-const loginBodySchema = z.object({
-  email: z.string().email('Need to pass a valid email address'),
-  password: z.string().min(5, 'Password must be at least 5 characters'),
-})
-
+const loginBodySchema = userZodSchema.pick({ email: true, password: true })
 export async function loginController(req: Request, res: Response) {
   const { email, password } = loginBodySchema.parse(req.body)
   const user = await loginService.execute({ email, password })

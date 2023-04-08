@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import { z } from 'zod'
 import makeProductServices from '../factories/makeProductServices'
+import { productZodSchema } from '../ZodSchemas'
 
 const {
   createProductService,
@@ -10,13 +10,7 @@ const {
   deleteProductService,
 } = makeProductServices()
 
-const productZodSchema = z.object({
-  id: z.string().uuid('Should pass a valid product id'),
-  name: z.string().min(1, 'Should pass a valid product name'),
-  price: z.number().positive('Should pass a valid product price'),
-  qty: z.number().positive('Should pass a valid quantity'),
-  categoryIds: z.array(z.string().uuid('Should pass a valid category ids')),
-})
+
 
 const createProductSchema = productZodSchema.omit({ id: true })
 export async function createProductController(req: Request, res: Response) {
