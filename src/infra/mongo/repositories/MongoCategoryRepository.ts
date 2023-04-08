@@ -21,7 +21,7 @@ export default class MongoCategoryRepository implements ICategoryRepository {
     if (!categoryDTO) return null
     return new Category(categoryDTO)
   }
-
+  
   async update(category: Category): Promise<Category> {
     const { _id, ...otherProps } = category
     await CategoryModel.updateOne({ _id }, otherProps)
