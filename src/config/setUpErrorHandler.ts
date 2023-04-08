@@ -2,7 +2,7 @@ import { Express, Request, Response, NextFunction } from 'express'
 import { ZodError } from 'zod'
 import AppError from '../domain/errors/AppError'
 
-export default function setUpErrorHandler(express: Express) {
+export default function setupErrorHandler(express: Express) {
   express.use(
     (
       error: Error,
