@@ -10,7 +10,7 @@ const {
   deleteCategoryService,
 } = makeCategoryServices()
 
-const createCategorySchema = categoryZodSchema.omit({ id: true})
+const createCategorySchema = categoryZodSchema.omit({ id: true })
 export async function createCategoryController(req: Request, res: Response) {
   const { name, parentId } = createCategorySchema.parse(req.body)
   const category = await createCategoryService.execute({
@@ -34,7 +34,10 @@ export async function listCategoriesController(req: Request, res: Response) {
   return res.json(categories)
 }
 
-const updateCategorySchema = categoryZodSchema.partial({name: true, parentId: true})
+const updateCategorySchema = categoryZodSchema.partial({
+  name: true,
+  parentId: true,
+})
 export async function updateCategoryController(req: Request, res: Response) {
   const { id, name, parentId } = updateCategorySchema.parse(req.body)
 
