@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import { z } from 'zod'
 import makeCategoryServices from '../factories/makeCategoryServices'
 
 const {
@@ -9,8 +10,15 @@ const {
   deleteCategoryService,
 } = makeCategoryServices()
 
+const categoryZodSchema = z.object({
+  id: z.string().uuid('Need to pass a valid id'),
+  name: z.string().min(1, 'Need to pass a valid category name'),
+  parentId: z.string().uuid('Need to pass a valid parent id'),
+})
+
+const createCategorySchema = categoryZodSchema.omit({ id: true})
 export async function createCategoryController(req: Request, res: Response) {
-  const { name, parentId } = req.body
+  const { name, parentId } = createCategorySchema.parse(req.body)
   const category = await createCategoryService.execute({
     name,
     parentCategoryId: parentId,
@@ -32,8 +40,9 @@ export async function listCategoriesController(req: Request, res: Response) {
   return res.json(categories)
 }
 
+const updateCategorySchema = categoryZodSchema.partial({name: true, parentId: true})
 export async function updateCategoryController(req: Request, res: Response) {
-  const { id, name, parentId } = req.body
+  const { id, name, parentId } = updateCategorySchema.parse(req.body)
 
   const category = await updateCategoryService.execute(id, {
     name,
