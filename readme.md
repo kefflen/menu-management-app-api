@@ -27,7 +27,6 @@ Documentação das rotas da API, feito com Swagger
 - TypeScript
 - JWT
 - Zod
-- Jest
 - Swagger
 
 ### Sobre as tecnologias e por que utilizar
@@ -42,9 +41,6 @@ JWT (JSON Web Token) é um padrão aberto (RFC 7519) para transmitir informaçõ
 
 #### Zod
 Zod é uma biblioteca de validação de esquemas em TypeScript. Ela é usada para garantir que as entradas do usuário ou outras entradas de dados correspondam ao formato esperado. Ela inclui muitos recursos úteis, como validação de tipos, validação de comprimento de sequência, validação de formato de data e hora, e muito mais. O Zod é uma excelente escolha para projetos em que a validação de entrada é importante.
-
-#### Jest
-Jest é um framework de teste de código aberto para JavaScript e TypeScript. Ele inclui muitos recursos úteis, como suporte integrado para testes de unidade, testes de integração, testes de componentes e testes de API. Ele também inclui recursos de mock e spies que simplificam a escrita de testes. O Jest é uma excelente escolha para projetos que exigem uma cobertura de teste abrangente e precisa.
 
 #### Swagger
 Swagger é uma ferramenta que ajuda a criar, documentar e testar APIs RESTful. Ele inclui uma especificação de API padronizada e um conjunto de ferramentas para gerar documentação de API interativa e testes automatizados. O Swagger é uma ótima escolha para projetos em que a documentação da API é importante e deve ser mantida atualizada. Ele também facilita a colaboração entre equipes de desenvolvimento e clientes que usam a API.
